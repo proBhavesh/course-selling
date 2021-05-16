@@ -85,7 +85,7 @@ export default ({
     setVisible(v => v + 6);
   };
   return (
-    <AnimationRevealPage>
+    <AnimationRevealPage disabled>
       <Header />
       <Container>
         <ContentWithPaddingXl>

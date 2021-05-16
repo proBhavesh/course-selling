@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink as NavBarLink } from "react-router-dom";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "components/misc/Layouts";
 import tw from "twin.macro";
@@ -75,7 +76,7 @@ export default ({
   privacyPolicyUrl = "#",
   signInUrl = "#"
 }) => (
-  <AnimationRevealPage>
+  <AnimationRevealPage disabled>
     <Container>
       <Content>
         <MainContainer>
@@ -118,9 +119,9 @@ export default ({
 
                 <p tw="mt-8 text-sm text-gray-600 text-center">
                   Already have an account?{" "}
-                  <a href={signInUrl} tw="border-b border-gray-500 border-dotted">
+                  <NavBarLink to="/login" tw="border-b border-gray-500 border-dotted">
                     Sign In
-                  </a>
+                  </NavBarLink>
                 </p>
               </Form>
             </FormContainer>

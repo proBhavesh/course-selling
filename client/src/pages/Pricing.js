@@ -8,7 +8,7 @@ import FAQ from "components/faqs/SingleCol.js";
 
 export default () => {
   return (
-    <AnimationRevealPage>
+    <AnimationRevealPage disabled>
       <Header />
       <Pricing />
       <Testimonial

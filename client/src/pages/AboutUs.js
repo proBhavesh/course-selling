@@ -19,7 +19,7 @@ import CustomerLoveIconImage from "images/simple-icon.svg";
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 export default () => {
   return (
-    <AnimationRevealPage>
+    <AnimationRevealPage disabled>
       <Header />
       <MainFeature1
         subheading={<Subheading>About Treact</Subheading>}
