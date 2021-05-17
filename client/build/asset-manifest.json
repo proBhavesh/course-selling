@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.def877c0.chunk.css",
-    "main.js": "/static/js/main.a7598c58.chunk.js",
-    "main.js.map": "/static/js/main.a7598c58.chunk.js.map",
+    "main.js": "/static/js/main.51956614.chunk.js",
+    "main.js.map": "/static/js/main.51956614.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.654845f0.js",
     "runtime-main.js.map": "/static/js/runtime-main.654845f0.js.map",
     "static/css/2.d0c8397f.chunk.css": "/static/css/2.d0c8397f.chunk.css",
-    "static/js/2.214f9330.chunk.js": "/static/js/2.214f9330.chunk.js",
-    "static/js/2.214f9330.chunk.js.map": "/static/js/2.214f9330.chunk.js.map",
+    "static/js/2.e12ed155.chunk.js": "/static/js/2.e12ed155.chunk.js",
+    "static/js/2.e12ed155.chunk.js.map": "/static/js/2.e12ed155.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.d0c8397f.chunk.css.map": "/static/css/2.d0c8397f.chunk.css.map",
     "static/css/main.def877c0.chunk.css.map": "/static/css/main.def877c0.chunk.css.map",
-    "static/js/2.214f9330.chunk.js.LICENSE.txt": "/static/js/2.214f9330.chunk.js.LICENSE.txt",
+    "static/js/2.e12ed155.chunk.js.LICENSE.txt": "/static/js/2.e12ed155.chunk.js.LICENSE.txt",
     "static/media/AboutUsPage.c9232ae2.jpeg": "/static/media/AboutUsPage.c9232ae2.jpeg",
     "static/media/AgencyLandingPage.717f8ed6.jpeg": "/static/media/AgencyLandingPage.717f8ed6.jpeg",
     "static/media/BlogIndexPage.0f03fbdc.jpeg": "/static/media/BlogIndexPage.0f03fbdc.jpeg",
@@ -43,7 +43,6 @@
     "static/media/chevron-right.svg": "/static/media/chevron-right.d45fd2f4.svg",
     "static/media/clock.svg": "/static/media/clock.38585fec.svg",
     "static/media/customer-support-illustration.7164659e.svg": "/static/media/customer-support-illustration.7164659e.svg",
-    "static/media/customers-logo-strip.680ac7c2.png": "/static/media/customers-logo-strip.680ac7c2.png",
     "static/media/customize-icon.367468c9.svg": "/static/media/customize-icon.367468c9.svg",
     "static/media/design-illustration-2.6da6a00b.svg": "/static/media/design-illustration-2.6da6a00b.svg",
     "static/media/design-illustration.415c277c.svg": "/static/media/design-illustration.415c277c.svg",
@@ -102,8 +101,8 @@
   "entrypoints": [
     "static/js/runtime-main.654845f0.js",
     "static/css/2.d0c8397f.chunk.css",
-    "static/js/2.214f9330.chunk.js",
+    "static/js/2.e12ed155.chunk.js",
     "static/css/main.def877c0.chunk.css",
-    "static/js/main.a7598c58.chunk.js"
+    "static/js/main.51956614.chunk.js"
   ]
 }

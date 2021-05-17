@@ -132,7 +132,7 @@ export default ({
   ];
 
   return (
-    <Container>
+    <Container id="coursePricing">
       <ContentWithPaddingXl>
         <HeaderContainer>
           {subheading && <Subheading>{subheading}</Subheading>}

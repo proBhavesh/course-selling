@@ -10,6 +10,7 @@ import logo from "images/logo.svg";
 import googleIconImageSrc from "images/google-icon.png";
 import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/user-plus.svg";
+import Footer from "components/footers/MiniCenteredFooter.js";
 
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
 const Content = tw.div`max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 shadow sm:rounded-lg flex justify-center flex-1`;
@@ -86,7 +87,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <SocialButtonsContainer>
+              {/*<SocialButtonsContainer>
                 {socialButtons.map((socialButton, index) => (
                   <SocialButton key={index} href={socialButton.url}>
                     <span className="iconContainer">
@@ -95,10 +96,10 @@ export default ({
                     <span className="text">{socialButton.text}</span>
                   </SocialButton>
                 ))}
-              </SocialButtonsContainer>
-              <DividerTextContainer>
+              </SocialButtonsContainer>*/}
+              {/*<DividerTextContainer>
                 <DividerText>Or Sign up with your e-mail</DividerText>
-              </DividerTextContainer>
+              </DividerTextContainer>*/}
               <Form>
                 <Input type="email" placeholder="Email" />
                 <Input type="password" placeholder="Password" />
@@ -132,5 +133,6 @@ export default ({
         </IllustrationContainer>
       </Content>
     </Container>
+    <Footer/>
   </AnimationRevealPage>
 );

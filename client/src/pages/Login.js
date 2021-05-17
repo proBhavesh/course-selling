@@ -10,6 +10,7 @@ import logo from "images/logo.svg";
 import googleIconImageSrc from "images/google-icon.png";
 import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
+import Footer from "components/footers/MiniCenteredFooter.js";
 
 const Container = tw(
   ContainerBase
@@ -87,7 +88,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <SocialButtonsContainer>
+              {/*<SocialButtonsContainer>
                 {socialButtons.map((socialButton, index) => (
                   <SocialButton key={index} href={socialButton.url}>
                     <span className="iconContainer">
@@ -100,10 +101,10 @@ export default ({
                     <span className="text">{socialButton.text}</span>
                   </SocialButton>
                 ))}
-              </SocialButtonsContainer>
-              <DividerTextContainer>
+              </SocialButtonsContainer>*/}
+              {/*<DividerTextContainer>
                 <DividerText>Or Sign in with your e-mail</DividerText>
-              </DividerTextContainer>
+              </DividerTextContainer>*/}
               <Form>
                 <Input type="email" placeholder="Email" />
                 <Input type="password" placeholder="Password" />
@@ -137,5 +138,6 @@ export default ({
         </IllustrationContainer>
       </Content>
     </Container>
+    <Footer/>
   </AnimationRevealPage>
 );

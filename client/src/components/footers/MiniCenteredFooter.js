@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink as NavBarLink } from "react-router-dom";
 import tw from "twin.macro";
 import styled from "styled-components";
 import {Container as ContainerBase } from "components/misc/Layouts.js"
@@ -39,11 +40,10 @@ export default () => {
             <LogoText>Treact</LogoText>
           </LogoContainer>
           <LinksContainer>
-            <Link href="#">Home</Link>
-            <Link href="#">About</Link>
-            <Link href="#">Contact Us</Link>
-            <Link href="#">Blog</Link>
-            <Link href="#">Reviews</Link>
+            <Link ><NavBarLink to="/">Home</NavBarLink></Link>
+            <Link ><NavBarLink to="/aboutus">About</NavBarLink></Link>
+            <Link ><NavBarLink to="/contactus">Contact Us</NavBarLink> </Link>
+            <Link ><NavBarLink to="/blog">Blog</NavBarLink></Link>
           </LinksContainer>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
