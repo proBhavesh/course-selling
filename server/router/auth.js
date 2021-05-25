@@ -6,12 +6,12 @@ const handle = require("../controllers/handle.js");
 router.get("/", handle.homeHandle);
 
 //post route
-router.post("/payment", handle.paymentHandle);
+router.post("/backend/payment", handle.paymentHandle);
 //signup
-router.post("/signup", handle.signupHandle);
+router.post("/backend/signup", handle.signupHandle);
 
 //login
 
-router.post("/login", handle.loginHandle);
+router.post("/backend/login", handle.loginHandle);
 
 module.exports = router;

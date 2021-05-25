@@ -86,12 +86,12 @@ export default ({
   ]
 }) => {
   const defaultPlans = [
-    {
-      name: "Free Plan",
-      durationPrices: ["$0", "$0"],
-      mainFeature: "For Personal Blogs",
-      features: ["30 Templates", "7 Landing Pages", "12 Internal Pages", "Basic Assistance"]
-    },
+    // {
+    //   name: "Free Plan",
+    //   durationPrices: ["$0", "$0"],
+    //   mainFeature: "For Personal Blogs",
+    //   features: ["30 Templates", "7 Landing Pages", "12 Internal Pages", "Basic Assistance"]
+    // },
     {
       name: "Pro Plan",
       durationPrices: ["$49", "$499"],
@@ -112,11 +112,11 @@ export default ({
           {subheading && <Subheading>{subheading}</Subheading>}
           <Heading>{heading}</Heading>
           {description && <Description>{description}</Description>}
-        <PlanDurationSwitcher>
+       {/* <PlanDurationSwitcher>
           {planDurations.map((planDuration, index) => (
             <SwitchButton active={activeDurationIndex === index} key={index} onClick={() => setActiveDurationIndex(index)}>{planDuration.switcherText}</SwitchButton>
           ))}
-        </PlanDurationSwitcher>
+        </PlanDurationSwitcher>*/}
         </HeaderContainer>
         <PlansContainer>
           {plans.map((plan, index) => (

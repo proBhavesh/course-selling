@@ -1,6 +1,7 @@
 import "tailwindcss/dist/base.css";
 import "styles/globalStyles.css";
 import React from "react";
+import BackToTop from "components/BackToTop/BackToTop.js";
 import { css } from "styled-components/macro"; //eslint-disable-line
 /*
  * This is the entry point component of this project. You can change the below exported default App component to any of
@@ -96,10 +97,13 @@ import SignupPage from "pages/Signup.js";
 import PricingPage from "pages/Pricing.js";
 import AboutUsPage from "pages/AboutUs.js";
 import ContactUsPage from "pages/ContactUs.js";
-import BlogIndexPage from "pages/BlogIndex.js";
+// import BlogIndexPage from "pages/BlogIndex.js";
+import CoursesPage from "pages/Courses.js";
 // import TermsOfServicePage from "pages/TermsOfService.js";
 // import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
-
+import Error from "pages/Error.js";
+import SignupSucess from "pages/SignupSucess.js";
+import LoginSucess from "pages/LoginSucess.js";
 import ComponentRenderer from "ComponentRenderer.js";
 // import MainLandingPage from "MainLandingPage.js";
 
@@ -111,35 +115,40 @@ export default function App() {
 
 	return (
 		<Router>
-			<Switch>
-				<Route path="/components/:type/:subtype/:name">
-					<ComponentRenderer />
-				</Route>
-				<Route path="/components/:type/:name">
-					<ComponentRenderer />
-				</Route>
-				<Route path="/" exact>
-					<SaaSProductLandingPage />
-				</Route>
-				<Route path="/login" exact>
-					<LoginPage />
-				</Route>
-				<Route path="/signup" exact>
-					<SignupPage />
-				</Route>
-				<Route path="/pricing" exact>
-					<PricingPage />
-				</Route>
-				<Route path="/aboutus" exact>
-					<AboutUsPage />
-				</Route>
-				<Route path="/contactus" exact>
-					<ContactUsPage />
-				</Route>
-				<Route path="/blog" exact>
-					<BlogIndexPage />
-				</Route>
-			</Switch>
+			<BackToTop>
+				<Switch>
+					<Route path="/" exact>
+						<SaaSProductLandingPage />
+					</Route>
+					<Route path="/login" exact>
+						<LoginPage />
+					</Route>
+					<Route path="/signup" exact>
+						<SignupPage />
+					</Route>
+					<Route path="/pricing" exact>
+						<PricingPage />
+					</Route>
+					<Route path="/aboutus" exact>
+						<AboutUsPage />
+					</Route>
+					<Route path="/contactus" exact>
+						<ContactUsPage />
+					</Route>
+					<Route path="/courses" exact>
+						<CoursesPage />
+					</Route>
+					<Route path="/SignupSucess" exact>
+						<SignupSucess />
+					</Route>
+					<Route path="/LoginSucess" exact>
+						<LoginSucess />
+					</Route>
+					<Route path="*" exact>
+						<Error />
+					</Route>
+				</Switch>
+			</BackToTop>
 		</Router>
 	);
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink as NavBarLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink as NavBarLink, useHistory } from "react-router-dom";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "components/misc/Layouts";
 import tw from "twin.macro";
@@ -77,18 +77,49 @@ export default ({
   SubmitButtonIcon = LoginIcon,
   forgotPasswordUrl = "#",
   signupUrl = "#",
-}) => (
-  <AnimationRevealPage disabled>
-    <Container>
-      <Content>
-        <MainContainer>
-          <LogoLink href={logoLinkUrl}>
-            <LogoImage src={logo} />
-          </LogoLink>
-          <MainContent>
-            <Heading>{headingText}</Heading>
-            <FormContainer>
-              {/*<SocialButtonsContainer>
+}) => {
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loginUser = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch("http://localhost:5000/backend/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await res.json();
+    console.log(`This is Data : ${data}`);
+    console.log(`This is res : ${res}`);
+    if (res.status === 200) {
+      history.push("/LoginSucess");
+    } else if (res.status === 400) {
+      window.alert("Invalid Credentials");
+      history.push("/Error");
+    } else {
+      window.alert("Something went wrong");
+    }
+  };
+  return (
+    <AnimationRevealPage disabled>
+      <Container>
+        <Content>
+          <MainContainer>
+            <LogoLink href={logoLinkUrl}>
+              <LogoImage src={logo} />
+            </LogoLink>
+            <MainContent>
+              <Heading>{headingText}</Heading>
+              <FormContainer>
+                {/*<SocialButtonsContainer>
                 {socialButtons.map((socialButton, index) => (
                   <SocialButton key={index} href={socialButton.url}>
                     <span className="iconContainer">
@@ -102,42 +133,53 @@ export default ({
                   </SocialButton>
                 ))}
               </SocialButtonsContainer>*/}
-              {/*<DividerTextContainer>
+                {/*<DividerTextContainer>
                 <DividerText>Or Sign in with your e-mail</DividerText>
               </DividerTextContainer>*/}
-              <Form>
-                <Input type="email" placeholder="Email" />
-                <Input type="password" placeholder="Password" />
-                <SubmitButton type="submit">
-                  <SubmitButtonIcon className="icon" />
-                  <span className="text">{submitButtonText}</span>
-                </SubmitButton>
-              </Form>
-              <p tw="mt-6 text-xs text-gray-600 text-center">
-                <NavBarLink
-                  to="/signup"
-                  tw="border-b border-gray-500 border-dotted"
-                >
-                  Forgot Password ?
-                </NavBarLink>
-              </p>
-              <p tw="mt-8 text-sm text-gray-600 text-center">
-                Dont have an account?{" "}
-                <NavBarLink
-                  to="/signup"
-                  tw="border-b border-gray-500 border-dotted"
-                >
-                  Sign Up
-                </NavBarLink>
-              </p>
-            </FormContainer>
-          </MainContent>
-        </MainContainer>
-        <IllustrationContainer>
-          <IllustrationImage imageSrc={illustrationImageSrc} />
-        </IllustrationContainer>
-      </Content>
-    </Container>
-    <Footer/>
-  </AnimationRevealPage>
-);
+                <Form method="POST">
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <Input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <SubmitButton type="submit" onClick={loginUser}>
+                    <SubmitButtonIcon className="icon" />
+                    <span className="text">{submitButtonText}</span>
+                  </SubmitButton>
+                </Form>
+                <p tw="mt-6 text-xs text-gray-600 text-center">
+                  <NavBarLink
+                    to="/signup"
+                    tw="border-b border-gray-500 border-dotted"
+                  >
+                    Forgot Password ?
+                  </NavBarLink>
+                </p>
+                <p tw="mt-8 text-sm text-gray-600 text-center">
+                  Dont have an account?{" "}
+                  <NavBarLink
+                    to="/signup"
+                    tw="border-b border-gray-500 border-dotted"
+                  >
+                    Sign Up
+                  </NavBarLink>
+                </p>
+              </FormContainer>
+            </MainContent>
+          </MainContainer>
+          <IllustrationContainer>
+            <IllustrationImage imageSrc={illustrationImageSrc} />
+          </IllustrationContainer>
+        </Content>
+      </Container>
+      <Footer />
+    </AnimationRevealPage>
+  );
+};

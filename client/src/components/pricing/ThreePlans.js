@@ -13,7 +13,7 @@ const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
 const Description = tw(SectionDescription)`w-full text-center`;
 
-const PlansContainer = tw.div`flex justify-between flex-col lg:flex-row items-center lg:items-stretch relative`;
+const PlansContainer = tw.div`flex justify-center flex-col lg:flex-row items-center lg:items-stretch relative`;
 const Plan = styled.div`
   ${tw`w-full max-w-sm mt-16 lg:mr-8 lg:last:mr-0 text-center px-8 rounded-lg shadow relative pt-2 text-gray-900 bg-white flex flex-col`}
   .planHighlight {
