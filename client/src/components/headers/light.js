@@ -111,7 +111,7 @@ export default ({
       {" "}
       <LogoLink>
         <img src={logo} alt="logo" />
-        Treact
+        Xplicit
       </LogoLink>
     </NavBarLink>
   );

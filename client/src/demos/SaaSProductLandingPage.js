@@ -29,7 +29,7 @@ export default () => {
         subheading={<Subheading>Features</Subheading>}
         heading={
           <>
-            We have Amazing <HighlightedText>Service.</HighlightedText>
+            We have Amazing <HighlightedText>Tutorials.</HighlightedText>
           </>
         }
       />
@@ -79,7 +79,7 @@ export default () => {
         subheading={<Subheading>Pricing</Subheading>}
         heading={
           <>
-            Reasonable & Flexible <HighlightedText>Plans.</HighlightedText>
+            Reasonable <HighlightedText>Plans.</HighlightedText>
           </>
         }
         plans={[
@@ -91,15 +91,13 @@ export default () => {
           //   features: ["30 Templates", "7 Landing Pages", "12 Internal Pages", "Basic Assistance"]
           // },
           {
-            name: "Business",
-            price: "$37.99",
-            duration: "Monthly",
-            mainFeature: "For Small Businesses",
+            name: "Pro Plan",
+            price: "$59.99",
+            duration: "Life-Time",
+            mainFeature: "Great Quality Tutorials",
             features: [
-              "60 Templates",
-              "15 Landing Pages",
-              "22 Internal Pages",
-              "Priority Assistance",
+              "Include Images",
+              "Written by talented people",
             ],
             featured: true,
           },

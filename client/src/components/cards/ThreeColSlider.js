@@ -187,7 +187,7 @@ export default () => {
     const stripe = await stripePromise;
 
     // Call your backend to create the Checkout Session
-    const response = await fetch("http://localhost:5000/backend/payment", {
+    const response = await fetch("/backend/payment", {
       method: "POST",
     });
 

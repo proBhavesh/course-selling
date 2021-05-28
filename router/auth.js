@@ -5,7 +5,7 @@ const handle = require("../controllers/handle.js");
 const authenticate = require("../middleware/authenticate");
 const User = require("../model/userSchema");
 //home page
-router.get("/", handle.homeHandle);
+// router.get("/", handle.homeHandle);
 
 //post route
 router.post("/backend/payment", handle.paymentHandle);
@@ -16,7 +16,7 @@ router.post("/backend/signup", handle.signupHandle);
 
 router.post("/backend/login", handle.loginHandle);
 
-router.get("http://localhost:3000/pricing", authenticate, (req, res) => {
+router.get("/pricing", authenticate, (req, res) => {
 	// console.log(req.cookies.jwtoken);
 	console.log("This is about");
 	res.send(req.rootUser);
