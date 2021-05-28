@@ -7,6 +7,7 @@ const uuid = require("uuid");
 const dotenv = require("dotenv");
 const cookies = require("cookie-parser");
 const mongoose = require("mongoose");
+const path = require("path");
 const app = express();
 
 //making passwords secure using .env
@@ -21,6 +22,15 @@ require("./db/connect.js");
 
 //importig outsourced routes
 app.use(require("./router/auth.js"));
+
+//serving the files
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static("client/build"));
+
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+	});
+}
 
 //server listening on port 3000
 PORT = 5000 || process.env.PORT;

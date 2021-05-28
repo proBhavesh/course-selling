@@ -1,3 +1,7 @@
+const uuid = require("uuid").v4;
+const stripe = require("stripe")(
+	"sk_test_51Is8NSSJt0CbONA4w38hWPvqJPZOU8FpEpE2Dx3TRojx3ZvemdlsImkN45PvieibKlqmgrd3tbYZIS1Zgs0Tl3A000smrtkchw"
+);
 const User = require("../model/userSchema");
 require("../db/connect");
 
@@ -13,28 +17,67 @@ const homeHandle = (req, res) => {
 	/*<-------------------------PAYMENT HANDLE ------------------------------------>*/
 }
 
-const paymentHandle = (req, res) => {
-	const { product, token } = req.body;
-	console.log(`Product is ${product} and price is ${product.price}`);
-	const idempontencyKey = uuid();
+// const paymentHandle = (req, res) => {
+// 	const { product, token } = req.body;
+// 	console.log("Product1", product);
+// 	console.log("PRICE", product.price);
+// 	const idempontencyKey = uuid();
 
-	return stripe.customers
-		.create({
-			email: token.email,
-			source: token_id,
-		})
-		.then((customer) => {
-			stripe.charges
-				.create({
-					amount: (product.price = 10),
+// 	return stripe.customers
+// 		.create({
+// 			email: token.email,
+// 			source: token.id,
+// 		})
+// 		.then((customer) => {
+// 			stripe.charges.create(
+// 				{
+// 					amount: product.price * 100,
+// 					currency: "usd",
+// 					customer: customer.id,
+// 					receipt_email: token.email,
+// 					description: `Purchase of ${product.name}`,
+// 					shipping: {
+// 						name: token.card.name,
+// 						address: {
+// 							country: token.card.address_country,
+// 						},
+// 					},
+// 				},
+// 				{ idempontencyKey }
+// 			);
+// 		})
+// 		.then(async (result) => {
+// 			res.status(200).json(result);
+// 			const userEmail = await User.findOne({ email: email });
+// 			console.log(userEmail);
+// 			const insertCourse = await userEmail.insert({
+// 				"course bought": "yes",
+// 			});
+// 		})
+// 		.catch((err) => console.log(err));
+// };
+
+const paymentHandle = async (req, res) => {
+	const session = await stripe.checkout.sessions.create({
+		payment_method_types: ["card"],
+		line_items: [
+			{
+				price_data: {
 					currency: "usd",
-					customer: customer.id,
-					receipt_email: token.email,
-					description: `Purchase of ${product.name}`,
-				})
-				.then((result) => res.status(200).json(result))
-				.catch((err) => console.log(err));
-		});
+					product_data: {
+						name: "Course",
+					},
+					unit_amount: 5999,
+				},
+				quantity: 1,
+			},
+		],
+		mode: "payment",
+		success_url: "https://example.com/success",
+		cancel_url: "https://example.com/cancel",
+	});
+
+	res.json({ id: session.id });
 };
 
 // <------------------------- SIGNUP HANDLE ------------------------------------>

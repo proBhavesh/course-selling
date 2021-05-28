@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import tw from "twin.macro";
 import styled from "styled-components";
+import StripeCheckout from "react-stripe-checkout";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons";
 import { ReactComponent as PriceIcon } from "feather-icons/dist/icons/dollar-sign.svg";
@@ -9,7 +12,6 @@ import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin
 import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
-import msOfficeImg from "../../images/course/msOfficeImg.png";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
@@ -94,8 +96,9 @@ export default () => {
   /* Change this according to your needs */
   const cards = [
     {
-      imageSrc: "https://media.gcflearnfree.org/global/topics/en/office-icon.svg",
-      title: "Office",
+      imageSrc:
+        "https://media.gcflearnfree.org/global/topics/en/office-icon.svg",
+      title: "Computer Basics",
       description:
         "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
       pricingText: "USD 59.99",
@@ -103,8 +106,8 @@ export default () => {
     },
     {
       imageSrc:
-      "https://media.gcflearnfree.org/global/topics/en/email-icon.svg",
-      title: "Email",
+        "https://media.gcflearnfree.org/global/topics/en/email-icon.svg",
+      title: "Basic Computer Skills",
       description:
         "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
       locationText: "Ibiza, Spain",
@@ -114,7 +117,7 @@ export default () => {
     {
       imageSrc:
         "https://media.gcflearnfree.org/global/topics/en/internet-icon.svg",
-      title: "Internet",
+      title: "Internet Basics",
       description:
         "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
       locationText: "Palo Alto, CA",
@@ -123,8 +126,8 @@ export default () => {
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1571770095004-6b61b1cf308a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=1024&w=768&q=80",
-      title: "Hudak Homes",
+        "https://media.gcflearnfree.org/global/topics/en/online-safety-icon.svg",
+      title: "Windows Basics",
       description:
         "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
       locationText: "Arizona, RAK",
@@ -132,6 +135,75 @@ export default () => {
       rating: 4.5,
     },
   ];
+  // const [product, setProduct] = useState({
+  //   name: "my course",
+  //   price: 59,
+  //   productBy: "Treact courses",
+  // });
+
+  // const makePayment = (token) => {
+  //   const body = {
+  //     token,
+  //     product,
+  //   };
+
+  //   const headers = {
+  //     "Content-Type": "application/json",
+  //   };
+
+  //   return fetch("http://localhost:5000/backend/payment", {
+  //     method: "POST",
+  //     headers,
+  //     body: JSON.stringify(body),
+  //   })
+  //     .then((response) => {
+  //       console.log("RESPONSE", response);
+  //       const { status } = response;
+  //       console.log("Status", status);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // const stripe = Stripe('pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ');
+  const stripePromise = loadStripe(
+    "pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+  );
+
+  // stripe.redirectToCheckout({
+  //   lineItems: [{
+  //     // Define the product and price in the Dashboard first, and use the price
+  //     // ID in your client-side code.
+  //     price: '{PRICE_ID}',
+  //     quantity: 1
+  //   }],
+  //   successUrl: 'https://www.example.com/success',
+  //   cancelUrl: 'https://www.example.com/cancel'
+  // });
+
+  const handleClick = async (event) => {
+    // Get Stripe.js instance
+    const stripe = await stripePromise;
+
+    // Call your backend to create the Checkout Session
+    const response = await fetch("http://localhost:5000/backend/payment", {
+      method: "POST",
+    });
+
+    const session = await response.json();
+
+    // When the customer clicks on the button, redirect them to Checkout.
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      // If `redirectToCheckout` fails due to a browser or network
+      // error, display the localized error message to your customer
+      // using `result.error.message`.
+    }
+  };
 
   return (
     <Container>
@@ -175,7 +247,7 @@ export default () => {
                 </SecondaryInfoContainer>
                 <Description>{card.description}</Description>
               </TextInfo>
-              <PrimaryButton>Buy Now</PrimaryButton>
+              <PrimaryButton onClick={handleClick}>Buy Now</PrimaryButton>
             </Card>
           ))}
         </CardSlider>

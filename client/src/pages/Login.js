@@ -103,7 +103,6 @@ export default ({
       history.push("/LoginSucess");
     } else if (res.status === 400) {
       window.alert("Invalid Credentials");
-      history.push("/Error");
     } else {
       window.alert("Something went wrong");
     }

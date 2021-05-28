@@ -106,6 +106,8 @@ import SignupSucess from "pages/SignupSucess.js";
 import LoginSucess from "pages/LoginSucess.js";
 import ComponentRenderer from "ComponentRenderer.js";
 // import MainLandingPage from "MainLandingPage.js";
+import ComputerBasicsSy from "./Courses/computerBasics/ComputerBasicsSy.js";
+import ComputerBasics from "./Courses/computerBasics/ComputerBasics.js";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -143,6 +145,12 @@ export default function App() {
 					</Route>
 					<Route path="/LoginSucess" exact>
 						<LoginSucess />
+					</Route>
+					<Route path="/c1" exact>
+						<ComputerBasicsSy />
+					</Route>
+					<Route path="/cb" exact>
+						<ComputerBasics />
 					</Route>
 					<Route path="*" exact>
 						<Error />
