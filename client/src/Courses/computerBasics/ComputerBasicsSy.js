@@ -1,6 +1,19 @@
+// import React from "react";
+// import "../../styles/styles1.css";
+// const ComputerBasicsSy = () => {
+// 	return (
+// 		<div>
+// 			<h1 className="my-name">I am Bhavesh</h1>
+// 		</div>
+// 	);
+// };
+
+// export default ComputerBasicsSy;
+
 import React from "react";
 // import "../../images/course/tutorial.css";
 // import "./styleCs.css";
+import "../../styles/styles1.css";
 
 const computerBasicsSy = () => {
 	return (

@@ -169,7 +169,7 @@ a {
 	clear: both
 }
 
-#request::-webkit-input-placeholder {
+/*#request::-webkit-input-placeholder {
 	color: #000
 }
 
@@ -179,7 +179,7 @@ a {
 
 #request::-moz-placeholder {
 	color: #000
-}
+}*/
 
 .subjects-select p {
 	display: inline-block;
@@ -211,7 +211,7 @@ a {
 	font-size: 11px
 }
 
-@media only screen and (max-width:960px) {
+/*@media only screen and (max-width:960px) {
 	body {
 		font-size: 1.15em
 	}
@@ -242,7 +242,7 @@ a {
 	body {
 		font-size: 1.05em
 	}
-}
+}*/
 
 .no-break {
 	white-space: nowrap!important
@@ -291,13 +291,13 @@ a {
 	line-height: 26px
 }
 
-.site-nav-contents>li {
+/*.site-nav-contents>li {
 	display: block;
 	padding: 20px 0;
 	break-inside: avoid;
 	-webkit-column-break-inside: avoid;
 	page-break-inside: avoid
-}
+}*/
 
 .site-nav a {
 	color: #646669;
@@ -682,7 +682,7 @@ h5 {
 	padding: 32px 0 48px
 }
 
-@media only screen and (max-width:960px) {
+/*@media only screen and (max-width:960px) {
 	#copyrightMobile,
 	#footerContent {
 		margin: 0 22px
@@ -715,7 +715,7 @@ h5 {
 		line-height: 1.5em;
 		margin-top: 7px
 	}
-}
+}*/
 
 #errorpage p,
 .endQuote,
@@ -728,7 +728,7 @@ h5 {
 	font-family: source sans pro, lucida sans unicode, sans-serif
 }
 
-@media only screen and (max-width:670px) {
+/*@media only screen and (max-width:670px) {
 	.footer-links-container {
 		-ms-flex-flow: column nowrap;
 		flex-flow: column nowrap
@@ -777,7 +777,7 @@ h5 {
 	html[lang=pt] .footer-logo-box {
 		padding: 4px 0 48px!important
 	}
-}
+}*/
 
 .copyright-wrapper {
 	padding: 0 5.35%
@@ -799,7 +799,7 @@ h5 {
 	padding: 30px 0;
 	line-height: 1.4
 }
-
+/*
 @media only screen and (max-width:960px) {
 	#sticky-wrapper {
 		min-height: initial
@@ -807,7 +807,7 @@ h5 {
 	#copyright {
 		padding: 30px 2.5%
 	}
-}
+}*/
 
 .zone.zone-content {
 	padding-bottom: 34px
@@ -918,7 +918,7 @@ h1 {
 	max-width: 350px
 }
 
-@media only screen and (max-width:960px) {
+/*@media only screen and (max-width:960px) {
 	.error-page-wrapper .header-nodesc .title-content {
 		margin-top: 20px!important
 	}
@@ -955,7 +955,7 @@ h1 {
 	.corner-images-box {
 		display: none
 	}
-}
+}*/
 
 .searchBox {
 	background-color: #fff;
@@ -1254,7 +1254,7 @@ sup {
 	outline-offset: 6px
 }
 
-@supports selector(:focus-visible) {
+/*@supports selector(:focus-visible) {
 	a:focus-visible {
 		text-decoration: none;
 		outline: #0058aa auto 5px
@@ -1269,7 +1269,7 @@ sup {
 	.footer-logo-box a:focus-visible .footer_social_media_link {
 		outline: #0058aa auto 5px
 	}
-}
+}*/
 
 #page-header {
 	min-width: 960px;
@@ -1953,7 +1953,7 @@ sup {
 	text-decoration: none
 }
 
-@supports selector(:focus-visible) {
+/*@supports selector(:focus-visible) {
 	.dropdown-close-x:focus-visible,
 	.header-btn:focus-visible,
 	.language-dropdown-button:focus-visible,
@@ -1970,7 +1970,7 @@ sup {
 	.site-nav a:focus-visible {
 		border-bottom: 1px solid #fff
 	}
-}
+}*/
 
 @media only screen and (max-width:960px) {
 	.desktop-header .primary-header {
@@ -2155,7 +2155,7 @@ sup {
 	}
 }
 
-@media only screen and (max-width:742px) {
+/*@media only screen and (max-width:742px) {
 	header .search-container {
 		padding: 9px 5.35%
 	}
@@ -2182,7 +2182,7 @@ sup {
 			left: -6px
 		}
 	}
-}
+}*/
 
 .header-desc h1 {
 	line-height: 1.2
@@ -2481,7 +2481,7 @@ sup {
 	display: block
 }
 
-@media only screen and (max-width:960px) {
+/*@media only screen and (max-width:960px) {
 	#subheaderContentContainer .tutorialYoutubeLink {
 		width: auto;
 		padding: 7px 30px
@@ -2545,7 +2545,7 @@ sup {
 	.header-desc h1 {
 		text-align: center
 	}
-}
+}*/
 
 /*@-webkit-keyframes pulse {
 	0% {
@@ -2559,7 +2559,7 @@ sup {
 	}
 }
 */
-@keyframes pulse {
+/*@keyframes pulse {
 	0% {
 		box-shadow: 0 0 0 0 rgba(56, 207, 202, .7)
 	}
@@ -2569,4 +2569,4 @@ sup {
 	100% {
 		box-shadow: 0 0 0 0 transparent
 	}
-}
+}*/

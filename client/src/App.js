@@ -108,6 +108,9 @@ import ComponentRenderer from "ComponentRenderer.js";
 // import MainLandingPage from "MainLandingPage.js";
 import ComputerBasicsSy from "./Courses/computerBasics/ComputerBasicsSy.js";
 import ComputerBasics from "./Courses/computerBasics/ComputerBasics.js";
+import ComputerBasicSkills from "./Courses/computerBasicSkills/ComputerBasicSkills.js";
+import InternetBasics from "./Courses/internetBasics/InternetBasics.js";
+import WindowsBasics from "./Courses/windowsBasics/WindowsBasics.js";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -146,11 +149,20 @@ export default function App() {
 					<Route path="/LoginSucess" exact>
 						<LoginSucess />
 					</Route>
-					<Route path="/c1" exact>
+					<Route path="/c0" exact>
 						<ComputerBasicsSy />
 					</Route>
-					<Route path="/cb" exact>
+					<Route path="/c1" exact>
 						<ComputerBasics />
+					</Route>
+					<Route path="/c2" exact>
+						<ComputerBasicSkills />
+					</Route>
+					<Route path="/c3" exact>
+						<InternetBasics />
+					</Route>
+					<Route path="/c4" exact>
+						<WindowsBasics />
 					</Route>
 					<Route path="*" exact>
 						<Error />
