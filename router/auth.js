@@ -16,10 +16,8 @@ router.post("/backend/signup", handle.signupHandle);
 
 router.post("/backend/login", handle.loginHandle);
 
-router.get("/pricing", authenticate, (req, res) => {
-	// console.log(req.cookies.jwtoken);
-	console.log("This is about");
-	res.send(req.rootUser);
-});
+//check if logged in
+
+router.post("/backend/isSignedIn", handle.isSignedIn);
 
 module.exports = router;

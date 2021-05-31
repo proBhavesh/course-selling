@@ -3,8 +3,9 @@ import Slider from "react-slick";
 import tw from "twin.macro";
 import styled from "styled-components";
 import StripeCheckout from "react-stripe-checkout";
-import { Elements } from "@stripe/react-stripe-js";
+import { Elements, CardElement } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+// import {parse, stringify} from 'flatted';
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons";
 import { ReactComponent as PriceIcon } from "feather-icons/dist/icons/dollar-sign.svg";
@@ -135,75 +136,81 @@ export default () => {
       rating: 4.5,
     },
   ];
-  // const [product, setProduct] = useState({
-  //   name: "my course",
-  //   price: 59,
-  //   productBy: "Treact courses",
-  // });
 
-  // const makePayment = (token) => {
-  //   const body = {
-  //     token,
-  //     product,
-  //   };
+  //<<<<<<<<<<<<<<<<<#######################################______Stripe Payment Mathod 1________#########################>>>>>>>>>>>>>>>>>
+  const [product, setProduct] = useState({
+    name: "my course",
+    price: 59,
+    productBy: "Treact courses",
+  });
 
-  //   const headers = {
-  //     "Content-Type": "application/json",
-  //   };
+  const makePayment = (token) => {
+    const body = {
+      token,
+      product,
+    };
 
-  //   return fetch("http://localhost:5000/backend/payment", {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    return fetch("http://localhost:5000/backend/payment", {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        console.log("RESPONSE", response);
+        const { status } = response;
+        console.log("Status", status);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // // const stripe = Stripe('pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ');
+  // const stripePromise = loadStripe(
+  //   "pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+  // );
+
+  // // stripe.redirectToCheckout({
+  // //   lineItems: [{
+  // //     // Define the product and price in the Dashboard first, and use the price
+  // //     // ID in your client-side code.
+  // //     price: '{PRICE_ID}',
+  // //     quantity: 1
+  // //   }],
+  // //   successUrl: 'https://www.example.com/success',
+  // //   cancelUrl: 'https://www.example.com/cancel'
+  // // });
+
+  // const handleClick = async (event) => {
+  //   // Get Stripe.js instance
+  //   const stripe = await stripePromise;
+
+  //   // Call your backend to create the Checkout Session
+  //   const response = await fetch("http://localhost:5000/backend/payment", {
   //     method: "POST",
-  //     headers,
-  //     body: JSON.stringify(body),
-  //   })
-  //     .then((response) => {
-  //       console.log("RESPONSE", response);
-  //       const { status } = response;
-  //       console.log("Status", status);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
+  //   });
+
+  //   const session = await response.json();
+
+  //   // When the customer clicks on the button, redirect them to Checkout.
+  //   const result = await stripe.redirectToCheckout({
+  //     sessionId: session.id,
+  //   });
+
+  //   if (result.error) {
+  //     // If `redirectToCheckout` fails due to a browser or network
+  //     // error, display the localized error message to your customer
+  //     // using `result.error.message`.
+  //   }
   // };
 
-  // const stripe = Stripe('pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ');
-  const stripePromise = loadStripe(
-    "pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
-  );
+  //<<<<<<<<<<<<<<<<<#######################################______Stripe Payment Mathod 3________#########################>>>>>>>>>>>>>>>>>
 
-  // stripe.redirectToCheckout({
-  //   lineItems: [{
-  //     // Define the product and price in the Dashboard first, and use the price
-  //     // ID in your client-side code.
-  //     price: '{PRICE_ID}',
-  //     quantity: 1
-  //   }],
-  //   successUrl: 'https://www.example.com/success',
-  //   cancelUrl: 'https://www.example.com/cancel'
-  // });
-
-  const handleClick = async (event) => {
-    // Get Stripe.js instance
-    const stripe = await stripePromise;
-
-    // Call your backend to create the Checkout Session
-    const response = await fetch("/backend/payment", {
-      method: "POST",
-    });
-
-    const session = await response.json();
-
-    // When the customer clicks on the button, redirect them to Checkout.
-    const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-
-    if (result.error) {
-      // If `redirectToCheckout` fails due to a browser or network
-      // error, display the localized error message to your customer
-      // using `result.error.message`.
-    }
-  };
+  // const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 
   return (
     <Container>
@@ -220,36 +227,141 @@ export default () => {
           </Controls>
         </HeadingWithControl>
         <CardSlider ref={setSliderRef} {...sliderSettings}>
-          {cards.map((card, index) => (
-            <Card key={index}>
-              <CardImage imageSrc={card.imageSrc} />
-              <TextInfo>
-                <TitleReviewContainer>
-                  <Title>{card.title}</Title>
-                  <RatingsInfo>
+          {/*<CardSlider>*/}
+          <Card>
+            <CardImage imageSrc="https://media.gcflearnfree.org/global/topics/en/office-icon.svg" />
+            <TextInfo>
+              <TitleReviewContainer>
+                <Title>Computer Basics</Title>
+                {/* <RatingsInfo>
                     <StarIcon />
-                    <Rating>{card.rating}</Rating>
-                  </RatingsInfo>
-                </TitleReviewContainer>
-                <SecondaryInfoContainer>
-                  <IconWithText>
-                    {/*<IconContainer>
+                    <Rating>5</Rating>
+                  </RatingsInfo>*/}
+              </TitleReviewContainer>
+              <SecondaryInfoContainer>
+                <IconWithText>
+                  {/*<IconContainer>
                       <LocationIcon />
                     </IconContainer>
                     <Text>{card.locationText}</Text>*/}
-                  </IconWithText>
-                  <IconWithText>
-                    <IconContainer>
-                      <PriceIcon />
+                </IconWithText>
+                <IconWithText>
+                  <IconContainer>
+                    <PriceIcon />
+                  </IconContainer>
+                  <Text>59.99</Text>
+                </IconWithText>
+              </SecondaryInfoContainer>
+              <Description>
+                Lorem ipsum dolor sit amet, consectur dolori adipiscing elit,
+                sed do eiusmod tempor nova incididunt ut labore et dolore magna
+                aliqua.
+              </Description>
+            </TextInfo>
+            <StripeCheckout
+              stripeKey="pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+              token={makePayment}
+              name="buy computer Basics"
+            >
+              <PrimaryButton>Buy Now</PrimaryButton>
+            </StripeCheckout>
+          </Card>
+          <Card>
+            <CardImage imageSrc="https://media.gcflearnfree.org/global/topics/en/email-icon.svg" />
+            <TextInfo>
+              <TitleReviewContainer>
+                <Title>Basic Computer Skills</Title>
+                {/* <RatingsInfo>
+                    <StarIcon />
+                    <Rating>5</Rating>
+                  </RatingsInfo>*/}
+              </TitleReviewContainer>
+              <SecondaryInfoContainer>
+                <IconWithText>
+                  {/*<IconContainer>
+                      <LocationIcon />
                     </IconContainer>
-                    <Text>{card.pricingText}</Text>
-                  </IconWithText>
-                </SecondaryInfoContainer>
-                <Description>{card.description}</Description>
-              </TextInfo>
-              <PrimaryButton onClick={handleClick}>Buy Now</PrimaryButton>
-            </Card>
-          ))}
+                    <Text>{card.locationText}</Text>*/}
+                </IconWithText>
+                <IconWithText>
+                  <IconContainer>
+                    <PriceIcon />
+                  </IconContainer>
+                  <Text>59.99</Text>
+                </IconWithText>
+              </SecondaryInfoContainer>
+              <Description>
+                Lorem ipsum dolor sit amet, consectur dolori adipiscing elit,
+                sed do eiusmod tempor nova incididunt ut labore et dolore magna
+                aliqua.
+              </Description>
+            </TextInfo>
+            <PrimaryButton>Buy Now</PrimaryButton>
+          </Card>
+          <Card>
+            <CardImage imageSrc="https://media.gcflearnfree.org/global/topics/en/internet-icon.svg" />
+            <TextInfo>
+              <TitleReviewContainer>
+                <Title>Internet Basics</Title>
+                {/* <RatingsInfo>
+                    <StarIcon />
+                    <Rating>5</Rating>
+                  </RatingsInfo>*/}
+              </TitleReviewContainer>
+              <SecondaryInfoContainer>
+                <IconWithText>
+                  {/*<IconContainer>
+                      <LocationIcon />
+                    </IconContainer>
+                    <Text>{card.locationText}</Text>*/}
+                </IconWithText>
+                <IconWithText>
+                  <IconContainer>
+                    <PriceIcon />
+                  </IconContainer>
+                  <Text>59.99</Text>
+                </IconWithText>
+              </SecondaryInfoContainer>
+              <Description>
+                Lorem ipsum dolor sit amet, consectur dolori adipiscing elit,
+                sed do eiusmod tempor nova incididunt ut labore et dolore magna
+                aliqua.
+              </Description>
+            </TextInfo>
+            <PrimaryButton>Buy Now</PrimaryButton>
+          </Card>
+          <Card>
+            <CardImage imageSrc="https://media.gcflearnfree.org/global/topics/en/online-safety-icon.svg" />
+            <TextInfo>
+              <TitleReviewContainer>
+                <Title>Windows Basics</Title>
+                {/* <RatingsInfo>
+                    <StarIcon />
+                    <Rating>5</Rating>
+                  </RatingsInfo>*/}
+              </TitleReviewContainer>
+              <SecondaryInfoContainer>
+                <IconWithText>
+                  {/*<IconContainer>
+                      <LocationIcon />
+                    </IconContainer>
+                    <Text>{card.locationText}</Text>*/}
+                </IconWithText>
+                <IconWithText>
+                  <IconContainer>
+                    <PriceIcon />
+                  </IconContainer>
+                  <Text>59.99</Text>
+                </IconWithText>
+              </SecondaryInfoContainer>
+              <Description>
+                Lorem ipsum dolor sit amet, consectur dolori adipiscing elit,
+                sed do eiusmod tempor nova incididunt ut labore et dolore magna
+                aliqua.
+              </Description>
+            </TextInfo>
+            <PrimaryButton>Buy Now</PrimaryButton>
+          </Card>
         </CardSlider>
       </Content>
     </Container>

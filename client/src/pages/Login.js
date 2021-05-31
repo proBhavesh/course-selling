@@ -78,6 +78,8 @@ export default ({
   forgotPasswordUrl = "#",
   signupUrl = "#",
 }) => {
+
+  //<--------------------------- Login --------------------->
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -85,7 +87,7 @@ export default ({
   const loginUser = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/backend/login", {
+    const res = await fetch("http://localhost:3000/backend/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

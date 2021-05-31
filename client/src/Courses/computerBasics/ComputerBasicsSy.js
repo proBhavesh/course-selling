@@ -13,7 +13,7 @@
 import React from "react";
 // import "../../images/course/tutorial.css";
 // import "./styleCs.css";
-import "../../styles/styles1.css";
+// import "../../styles/styles1.css";
 
 const computerBasicsSy = () => {
 	return (

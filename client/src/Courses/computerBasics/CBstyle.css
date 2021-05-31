@@ -192,8 +192,8 @@ var {
 	font-size: 100%;
 	font-family: inherit;
 	vertical-align: baseline
-}*/
-
+}
+*/
 #quote div,
 .logged-in-state,
 em {
@@ -235,7 +235,7 @@ q {
 	quotes: "" ""
 }
 
-article,
+/*article,
 aside,
 footer,
 header,
@@ -247,11 +247,11 @@ body,
 html {
 	height: 100%;
 	position: relative
-}
+}*/
 
 body {
 	background-color: #fff;
-	font-family: 'Source Sans Pro', 'Lucida Sans Unicode', 'Lucida Sans Unicode', sans-serif;
+	/*font-family: 'Source Sans Pro', 'Lucida Sans Unicode', 'Lucida Sans Unicode', sans-serif;*/
 	color: #4E4E4E;
 	font-size: 1.19em;
 	line-height: 1.5em
@@ -259,7 +259,7 @@ body {
 
 #footerContent h4,
 #quote div {
-	font-family: 'Source Sans Pro', 'Lucida Sans Unicode', sans-serif
+	/*font-family: 'Source Sans Pro', 'Lucida Sans Unicode', sans-serif*/
 }
 
 #page-wrapper {
@@ -279,10 +279,10 @@ footer {
 	min-height: 300px
 }
 
-a {
+/*a {
 	color: #324698;
 	text-decoration: none
-}
+}*/
 
 .clearfix:after {
 	content: ".";
@@ -499,7 +499,7 @@ a {
 
 #impersonationNote a {
 	font-weight: 400;
-	text-decoration: underline;
+	/*text-decoration: underline;*/
 	margin-left: 15px
 }
 
@@ -511,7 +511,7 @@ a {
 }
 
 .manage-actions a {
-	text-decoration: none;
+	/*text-decoration: none;*/
 	margin: 0 10px;
 	color: #555;
 	font-weight: 400
@@ -521,7 +521,7 @@ a {
 .error-suggestions a:hover,
 a:focus,
 footer a:focus {
-	text-decoration: underline
+	/*text-decoration: underline*/
 }
 
 .manage-actions a:after,
@@ -771,7 +771,7 @@ footer .mobilefooter {
 	line-height: 1.4
 }
 
-#errorpage h2,
+/*#errorpage h2,
 .endQuote,
 h1,
 h2,
@@ -780,7 +780,7 @@ h4,
 h5 {
 	font-weight: 700
 }
-
+*/
 .footer-links-container {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -830,7 +830,7 @@ h5 {
 		margin-left: auto;
 		margin-right: auto;
 		font-size: 10px;
-		font-family: 'Source Sans Pro', sans-serif;
+		/*font-family: 'Source Sans Pro', sans-serif;*/
 		color: #707880;
 		text-transform: uppercase;
 		padding: 0;
@@ -840,7 +840,7 @@ h5 {
 	}
 }
 
-#errorpage p,
+/*#errorpage p,
 .endQuote,
 .searchBox,
 h1,
@@ -850,7 +850,7 @@ h4,
 h5 {
 	font-family: 'Source Sans Pro', 'Lucida Sans Unicode', sans-serif
 }
-
+*/
 @media only screen and (max-width:670px) {
 	.footer-links-container {
 		-ms-flex-flow: column nowrap;
@@ -935,13 +935,13 @@ h5 {
 .zone.zone-content {
 	padding-bottom: 34px
 }
-
+/*
 h1 {
 	color: #707980;
 	font-size: 30px;
 	margin-top: 25px;
 	margin-bottom: 10px
-}
+}*/
 
 #overlay {
 	position: fixed;
@@ -1125,10 +1125,10 @@ h1 {
 	border: 1px solid #b0b8bf
 }
 
-sup {
+/*sup {
 	font-size: smaller
 }
-
+*/
 .scroll-trigger,
 .scroll-trigger-top {
 	visibility: hidden;
@@ -1369,7 +1369,7 @@ sup {
 }
 
 .footer-logo-box a:focus {
-	text-decoration: none
+	/*text-decoration: none*/
 }
 
 .footer-logo-box a:focus .footer_social_media_link {
@@ -1407,7 +1407,7 @@ sup {
 #page-header h1,
 #page-header h2,
 #page-header input {
-	font-family: 'Source Sans Pro', 'Lucida Sans Unicode';
+	/*font-family: 'Source Sans Pro', 'Lucida Sans Unicode';*/
 	margin-top: 0
 }
 
@@ -1525,7 +1525,7 @@ sup {
 	width: 150px;
 	height: 100px;
 	color: #4F4F4F;
-	text-decoration: none;
+	/*text-decoration: none;*/
 	float: right;
 	line-height: 100px;
 	font-size: 16px;
@@ -1868,14 +1868,14 @@ sup {
 
 .sub-header h1 {
 	color: #FFF;
-	font-family: 'Source Sans Pro', 'Lucida Sans Unicode'!important;
+	/*font-family: 'Source Sans Pro', 'Lucida Sans Unicode'!important;*/
 	font-size: 30px;
 	font-weight: 600
 }
 
 .sub-header h1 a {
 	color: #FFF;
-	font-family: 'Source Sans Pro', 'Lucida Sans Unicode'!important;
+	/*font-family: 'Source Sans Pro', 'Lucida Sans Unicode'!important;*/
 	font-weight: 600
 }
 
@@ -1918,11 +1918,11 @@ sup {
 
 #subheaderContentContainer .header-desc .description a {
 	color: #FFF;
-	text-decoration: underline
+	/*text-decoration: underline*/
 }
 
 #subheaderContentContainer .header-desc .description a:hover {
-	text-decoration: underline
+	/*text-decoration: underline*/
 }
 
 .header-desc:after {
@@ -2073,7 +2073,7 @@ sup {
 	color: #000;
 	margin-bottom: -1px;
 	border-bottom: 1px solid #646669;
-	text-decoration: none
+	/*text-decoration: none*/
 }
 
 /*@supports selector(:focus-visible) {
@@ -2190,7 +2190,7 @@ sup {
 		width: 75%;
 		height: 30px;
 		color: #6c6c6c;
-		font-family: 'Source Sans Pro';
+		/*font-family: 'Source Sans Pro';*/
 		font-size: .85em;
 		border: 0;
 		-webkit-padding-start: 40px;
@@ -2503,7 +2503,7 @@ sup {
 .infinite-nav a,
 .lesson a {
 	color: #00ACD7;
-	text-decoration: none
+	/*text-decoration: none*/
 }
 
 .lesson a {
@@ -2512,7 +2512,7 @@ sup {
 
 .lesson a:hover {
 	color: #0089ac;
-	text-decoration: underline
+	/*text-decoration: underline*/
 }
 
 .lesson a:visited {
@@ -2611,7 +2611,7 @@ iframe {
 .lesson ol {
 	counter-reset: li;
 	list-style: none;
-	font-family: 'Source Sans Pro', 'Lucida Sans Unicode', sans-serif;
+	/*font-family: 'Source Sans Pro', 'Lucida Sans Unicode', sans-serif;*/
 	position: relative;
 	padding: 0;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5)
@@ -2796,7 +2796,7 @@ iframe {
 .lesson .probCentered {
 	padding-left: 36px;
 	padding-right: 140px;
-	font-family: Kalam!important;
+	/*font-family: Kalam!important;*/
 	font-style: normal;
 	font-weight: 400;
 	font-size: 28px;
@@ -2852,7 +2852,7 @@ iframe {
 	font-size: 1.13em;
 	line-height: 1.2em;
 	font-weight: regular;
-	text-decoration: none!important;
+	/*text-decoration: none!important;*/
 	color: #249fd0!important
 }
 
@@ -2979,7 +2979,7 @@ iframe {
 }
 
 .sub-header h1 a {
-	text-decoration: underline
+	/*text-decoration: underline*/
 }
 
 #subheaderContentContainer .header-nodesc .title-content {
@@ -3170,7 +3170,7 @@ footer {
 .infinite-nav a:hover {
 	background-color: #00ACD7;
 	color: #FFF!important;
-	text-decoration: none
+	/*text-decoration: none*/
 }
 
 .infinite-nav a:visited {
@@ -3232,7 +3232,7 @@ footer {
 	background-color: #324698;
 	color: #FFF;
 	outline: 0;
-	text-decoration: none
+	/*text-decoration: none*/
 }
 
 .linkblue-button:focus {
@@ -3243,7 +3243,7 @@ footer {
 
 .divider-box h4:focus {
 	color: #aaa;
-	text-decoration: none
+	/*text-decoration: none*/
 }
 
 /*@supports selector(:focus-visible) {
@@ -3813,7 +3813,7 @@ footer {
 
 .menu-start .math-menu-label {
 	color: #FFF;
-	font-family: Kalam!important;
+	/*font-family: Kalam!important;*/
 	font-style: normal;
 	font-weight: 400;
 	font-size: 52px;
@@ -3829,7 +3829,7 @@ footer {
 .reading select,
 .reading span,
 .reading.initial-box h4 {
-	font-family: overpass, sans-serif
+	/*font-family: overpass, sans-serif*/
 }
 
 .menu-start .math-level-one,
@@ -5251,7 +5251,7 @@ footer {
 	color: initial;
 	font-size: initial;
 	font-weight: initial;
-	font-family: initial;
+	/*font-family: initial;*/
 	background: initial;
 	border: initial;
 	border-radius: initial;
@@ -5261,7 +5261,7 @@ footer {
 code,
 pre {
 	background: #f4f4f4;
-	font-family: monospace
+	/*font-family: monospace*/
 }
 
 #content-area .html p {
@@ -5347,7 +5347,7 @@ p.scriptInputError {
 
 .css .selector {
 	position: absolute;
-	font-family: monospace;
+	/*font-family: monospace;*/
 	color: #ccc;
 	left: 22px
 }
@@ -5419,7 +5419,7 @@ code {
 	border: none;
 	border-radius: 50px;
 	width: 150px;
-	font-family: inherit;
+	/*font-family: inherit;*/
 	font-size: 19px;
 	background: #00ACD7;
 	cursor: pointer;
@@ -6154,7 +6154,7 @@ code {
 	float: right;
 	width: 115px;
 	color: #FFF;
-	font-family: inherit;
+	/*font-family: inherit;*/
 	font-size: 19px;
 	background: #00ACD7;
 	border: none;
@@ -6169,7 +6169,7 @@ code {
 .quiz-hint {
 	-webkit-animation: pulsate 3s ease-out;
 	-webkit-animation-iteration-count: infinite;
-	text-decoration: underline
+	/*text-decoration: underline*/
 }
 
 .interactive-quiz-optional {
@@ -6182,10 +6182,10 @@ code {
 @-webkit-keyframes pulsate {
 	0%,
 	100% {
-		text-decoration: none
+		/*text-decoration: none*/
 	}
 	50% {
-		text-decoration: underline
+		/*text-decoration: underline*/
 	}
 }
 
@@ -6448,7 +6448,7 @@ code {
 .lgcanvas div.pu div.pucontent,
 .lgcanvas div.pu div.pucontent p,
 .lgcanvas div.pu div.pucontent p span {
-	font-family: 'Source Sans Pro'!important;
+	/*font-family: 'Source Sans Pro'!important;*/
 	color: #707880!important;
 	font-size: 16px!important
 }
@@ -6541,7 +6541,7 @@ code {
 	border: 1px solid #FFF;
 	z-index: 61;
 	height: auto!important;
-	font-family: 'Source Sans Pro';
+	/*font-family: 'Source Sans Pro';*/
 	text-align: left!important
 }
 
@@ -6552,7 +6552,7 @@ code {
 .hotspot-content h2 {
 	background-color: #F37E61;
 	color: #FFF!important;
-	font-family: 'Source Sans Pro'!important;
+	/*font-family: 'Source Sans Pro'!important;*/
 	font-size: 16pt!important;
 	font-weight: 700;
 	letter-spacing: 0!important;
@@ -6776,7 +6776,7 @@ code {
 }
 
 .new-resource-list a:hover {
-	text-decoration: none;
+	/*text-decoration: none;*/
 	background-color: rgba(255, 255, 255, .25)
 }
 
@@ -6849,7 +6849,7 @@ table .fraction {
 .algTable th,
 .cancel th,
 .fract th {
-	text-decoration: underline
+	/*text-decoration: underline*/
 }
 
 .blue {
@@ -6889,7 +6889,7 @@ div .eq {
 .probKalam {
 	padding-left: 36px;
 	padding-right: 140px;
-	font-family: Kalam!important;
+	/*font-family: Kalam!important;*/
 	font-style: normal;
 	font-size: 28px;
 	line-height: 32px
@@ -6907,7 +6907,7 @@ div .eq {
 .cancel,
 .fract,
 div .eq {
-	font-family: Kalam!important;
+	/*font-family: Kalam!important;*/
 	font-style: normal;
 	font-size: 28px
 }
@@ -7043,7 +7043,7 @@ td .upper_line {
 #lessoncontent .fract,
 #lessoncontent .probCentered,
 #lessoncontent div .eq {
-	font-family: Kalam!important;
+	/*font-family: Kalam!important;*/
 	font-style: normal;
 	font-weight: 400;
 	font-size: 28px
@@ -7190,7 +7190,7 @@ td .upper_line {
 	line-height: 82px;
 	padding: 0;
 	text-align: center;
-	font-family: 'Source Sans Pro';
+	/*font-family: 'Source Sans Pro';*/
 	font-size: 62px
 }
 
@@ -7226,7 +7226,7 @@ td .upper_line {
 	line-height: 122px;
 	padding: 0;
 	text-align: center;
-	font-family: 'Source Sans Pro';
+	/*font-family: 'Source Sans Pro';*/
 	font-size: 92px;
 	font-weight: 700
 }
@@ -7273,7 +7273,7 @@ td .upper_line {
 
 .atm-edl .edl-display-text,
 .atm-edl .edl-instruction {
-	font-family: "Lucida Console", "Courier New", monospace
+	/*font-family: "Lucida Console", "Courier New", monospace*/
 }
 
 .start-edl-button {
@@ -7538,7 +7538,7 @@ td .upper_line {
 	max-width: 350px;
 	width: 100%;
 	color: #000;
-	font-family: Arial, Helvetica, sans-serif;
+	/*font-family: Arial, Helvetica, sans-serif;*/
 	font-size: 24px;
 	font-style: italic;
 	position: absolute;
@@ -7700,7 +7700,7 @@ td .upper_line {
 
 .mejs__container {
 	background: #000;
-	font-family: Helvetica, Arial, serif;
+	/*font-family: Helvetica, Arial, serif;*/
 	position: relative;
 	text-align: left;
 	text-indent: 0;
@@ -7895,7 +7895,7 @@ td .upper_line {
 	overflow: hidden;
 	padding: 0;
 	position: absolute;
-	text-decoration: none;
+	/*text-decoration: none;*/
 	width: 20px
 }
 
@@ -8333,7 +8333,7 @@ td .upper_line {
 
 .mejs__captions-layer a {
 	color: #fff;
-	text-decoration: underline
+	/*text-decoration: underline*/
 }
 
 .mejs__captions-layer[lang=ar] {

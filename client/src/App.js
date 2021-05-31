@@ -1,6 +1,6 @@
 import "tailwindcss/dist/base.css";
 import "styles/globalStyles.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import BackToTop from "components/BackToTop/BackToTop.js";
 import { css } from "styled-components/macro"; //eslint-disable-line
 /*
@@ -99,6 +99,10 @@ import AboutUsPage from "pages/AboutUs.js";
 import ContactUsPage from "pages/ContactUs.js";
 // import BlogIndexPage from "pages/BlogIndex.js";
 import CoursesPage from "pages/Courses.js";
+//########################################################################################################
+import IsSignedIn from "pages/IsSignedIn.js";
+
+//###############################################################################################\\\\\\\\\\\\////////////////
 // import TermsOfServicePage from "pages/TermsOfService.js";
 // import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 import Error from "pages/Error.js";
@@ -118,57 +122,73 @@ export default function App() {
 	// If you want to disable the animation just use the disabled `prop` like below on your page's component
 	// return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
 
+	useEffect(async () => {
+		const res = await fetch("http://localhost:3000/backend/isSignedIn", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		// if (res.status === 200) {
+		// 	console.log(res);
+		// }
+
+		console.log("this is response", res);
+	}, []);
+
+	let allowedRoutes = (
+		<Switch>
+			<Route path="/" exact>
+				<SaaSProductLandingPage />
+			</Route>
+			<Route path="/login" exact>
+				<LoginPage />
+			</Route>
+			<Route path="/signup" exact>
+				<SignupPage />
+			</Route>
+			<Route path="/pricing" exact>
+				<PricingPage />
+			</Route>
+			<Route path="/aboutus" exact>
+				<AboutUsPage />
+			</Route>
+			<Route path="/contactus" exact>
+				<ContactUsPage />
+			</Route>
+			<Route path="/courses" exact>
+				<CoursesPage />
+			</Route>
+			<Route path="/SignupSucess" exact>
+				<SignupSucess />
+			</Route>
+			<Route path="/LoginSucess" exact>
+				<LoginSucess />
+			</Route>
+			<Route path="/c1" exact>
+				<ComputerBasics />
+			</Route>
+			<Route path="/c2" exact>
+				<ComputerBasicSkills />
+			</Route>
+			<Route path="/c3" exact>
+				<InternetBasics />
+			</Route>
+			<Route path="/c4" exact>
+				<WindowsBasics />
+			</Route>
+			<Route path="/check" exact>
+				<IsSignedIn />
+			</Route>
+			<Route path="*" exact>
+				<Error />
+			</Route>
+		</Switch>
+	);
 	return (
 		<Router>
-			<BackToTop>
-				<Switch>
-					<Route path="/" exact>
-						<SaaSProductLandingPage />
-					</Route>
-					<Route path="/login" exact>
-						<LoginPage />
-					</Route>
-					<Route path="/signup" exact>
-						<SignupPage />
-					</Route>
-					<Route path="/pricing" exact>
-						<PricingPage />
-					</Route>
-					<Route path="/aboutus" exact>
-						<AboutUsPage />
-					</Route>
-					<Route path="/contactus" exact>
-						<ContactUsPage />
-					</Route>
-					<Route path="/courses" exact>
-						<CoursesPage />
-					</Route>
-					<Route path="/SignupSucess" exact>
-						<SignupSucess />
-					</Route>
-					<Route path="/LoginSucess" exact>
-						<LoginSucess />
-					</Route>
-					<Route path="/c0" exact>
-						<ComputerBasicsSy />
-					</Route>
-					<Route path="/c1" exact>
-						<ComputerBasics />
-					</Route>
-					<Route path="/c2" exact>
-						<ComputerBasicSkills />
-					</Route>
-					<Route path="/c3" exact>
-						<InternetBasics />
-					</Route>
-					<Route path="/c4" exact>
-						<WindowsBasics />
-					</Route>
-					<Route path="*" exact>
-						<Error />
-					</Route>
-				</Switch>
-			</BackToTop>
+			<BackToTop>{allowedRoutes}</BackToTop>
 		</Router>
 	);
 }

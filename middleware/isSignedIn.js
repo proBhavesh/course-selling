@@ -2,12 +2,12 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const User = require("../model/userSchema");
 
-const Authenticate = async (req, res, next) => {
+const isSignedIn = async (req, res, next) => {
 	try {
 		// console.log(req.cookies);
 		const token = req.cookies.jwtoken;
 		if (!token) {
-			return console.log("token not found", token);
+			console.log("token not found", token);
 		}
 		const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
 
@@ -16,18 +16,19 @@ const Authenticate = async (req, res, next) => {
 			"tokens.token": token,
 		});
 		if (!rootUser) {
-			return new Error("user not found");
+			throw new Error("user not found");
 		}
 
-		// req.token = token;
-		// req.rootUser = rootUser;
-		// req.userId = rootUser._id;
+		req.token = token;
+		req.rootUser = rootUser;
+		req.userId = rootUser._id;
+		console.log(token, rootUser);
 
 		next();
 	} catch (err) {
-		console.log("Unauthorized: No token provided");
+		res.status(401).send("Unauthorized: No token provided");
 		console.log(err);
 	}
 };
 
-module.exports = Authenticate;
+module.exports = isSignedIn;
