@@ -6,5 +6,6 @@ export const check = async () => {
 		},
 	});
 
-	console.log("this is response", res);
+	// console.log("this is response", res.status);
+	return await res;
 };

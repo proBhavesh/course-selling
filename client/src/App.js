@@ -121,8 +121,19 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 export default function App() {
 	// If you want to disable the animation just use the disabled `prop` like below on your page's component
 	// return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
-	const checkRun = check();
-	console.log(checkRun);
+
+	const [state, setState] = useState(100);
+
+	useEffect(() => {
+		const runCheck = check();
+		runCheck.then((response) => {
+			// console.log("This is from useEffect ", response.status);
+			return setState(response.status);
+		});
+	}, []);
+
+	// console.log("This is state itself", state);
+
 	let allowedRoutes = (
 		<Switch>
 			<Route path="/" exact>
@@ -152,7 +163,7 @@ export default function App() {
 			<Route path="/LoginSucess" exact>
 				<LoginSucess />
 			</Route>
-			<Route path="/c1" exact>
+			{/*<Route path="/c1" exact>
 				<ComputerBasics />
 			</Route>
 			<Route path="/c2" exact>
@@ -163,12 +174,62 @@ export default function App() {
 			</Route>
 			<Route path="/c4" exact>
 				<WindowsBasics />
-			</Route>
+			</Route>*/}
 			<Route path="*" exact>
 				<Error />
 			</Route>
 		</Switch>
 	);
+
+	if (state === 200) {
+		allowedRoutes = (
+			<Switch>
+				<Route path="/" exact>
+					<SaaSProductLandingPage />
+				</Route>
+				{/*<Route path="/login" exact>
+				<LoginPage />
+			</Route>
+			<Route path="/signup" exact>
+				<SignupPage />
+			</Route>*/}
+				<Route path="/pricing" exact>
+					<PricingPage />
+				</Route>
+				<Route path="/aboutus" exact>
+					<AboutUsPage />
+				</Route>
+				<Route path="/contactus" exact>
+					<ContactUsPage />
+				</Route>
+				<Route path="/courses" exact>
+					<CoursesPage />
+				</Route>
+				<Route path="/SignupSucess" exact>
+					<SignupSucess />
+				</Route>
+				<Route path="/LoginSucess" exact>
+					<LoginSucess />
+				</Route>
+				<Route path="/c1" exact>
+					<ComputerBasics />
+				</Route>
+				<Route path="/c2" exact>
+					<ComputerBasicSkills />
+				</Route>
+				<Route path="/c3" exact>
+					<InternetBasics />
+				</Route>
+				<Route path="/c4" exact>
+					<WindowsBasics />
+				</Route>
+				<Route path="*" exact>
+					<Error />
+				</Route>
+			</Switch>
+		);
+	}
+
 	return (
 		<Router>
 			<BackToTop>{allowedRoutes}</BackToTop>

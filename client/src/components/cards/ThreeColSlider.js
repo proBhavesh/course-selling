@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import tw from "twin.macro";
 import styled from "styled-components";
 import StripeCheckout from "react-stripe-checkout";
 import { Elements, CardElement } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { check } from "../../pages/IsSignedIn.js";
 // import {parse, stringify} from 'flatted';
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons";
@@ -71,6 +72,12 @@ const Text = tw.div`ml-2 text-sm font-semibold text-gray-800`;
 const PrimaryButton = tw(
   PrimaryButtonBase
 )`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
+
+// const runCheck = check();
+// runCheck.then((response) => {
+//   // console.log("This is from useEffect ", response.status);
+//   return setState(response.status);
+// });
 export default () => {
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [sliderRef, setSliderRef] = useState(null);
@@ -136,6 +143,30 @@ export default () => {
       rating: 4.5,
     },
   ];
+  //<--------------------------------------Check if signed in--------------------------------------->
+  const [state, setState] = useState(100);
+
+  useEffect(() => {
+    const runCheck = check();
+    runCheck.then((response) => {
+      // console.log("This is from useEffect ", response.status);
+      return setState(response.status);
+    });
+  }, []);
+
+  console.log(state);
+
+  const [buyText, setBuyText] = useState("Please login to Buy");
+
+  useEffect(() => {
+    if (state === 200) {
+      setBuyText("Buy Now");
+    }
+  }, [state]);
+
+  // else {
+  //   setBuyText("Please login to Buy");
+  // }
 
   //<<<<<<<<<<<<<<<<<#######################################______Stripe Payment Mathod 1________#########################>>>>>>>>>>>>>>>>>
   const [product, setProduct] = useState({
@@ -163,6 +194,9 @@ export default () => {
         console.log("RESPONSE", response);
         const { status } = response;
         console.log("Status", status);
+        if (status === 200) {
+          console.log("Payment successful");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -263,7 +297,7 @@ export default () => {
               token={makePayment}
               name="buy computer Basics"
             >
-              <PrimaryButton>Buy Now</PrimaryButton>
+              <PrimaryButton>{buyText}</PrimaryButton>
             </StripeCheckout>
           </Card>
           <Card>
@@ -296,7 +330,7 @@ export default () => {
                 aliqua.
               </Description>
             </TextInfo>
-            <PrimaryButton>Buy Now</PrimaryButton>
+            <PrimaryButton>{buyText}</PrimaryButton>
           </Card>
           <Card>
             <CardImage imageSrc="https://media.gcflearnfree.org/global/topics/en/internet-icon.svg" />
@@ -328,7 +362,7 @@ export default () => {
                 aliqua.
               </Description>
             </TextInfo>
-            <PrimaryButton>Buy Now</PrimaryButton>
+            <PrimaryButton>{buyText}</PrimaryButton>
           </Card>
           <Card>
             <CardImage imageSrc="https://media.gcflearnfree.org/global/topics/en/online-safety-icon.svg" />
@@ -360,7 +394,7 @@ export default () => {
                 aliqua.
               </Description>
             </TextInfo>
-            <PrimaryButton>Buy Now</PrimaryButton>
+            <PrimaryButton>{buyText}</PrimaryButton>
           </Card>
         </CardSlider>
       </Content>

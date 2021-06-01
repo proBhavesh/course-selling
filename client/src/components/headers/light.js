@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink as NavBarLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-
+import { check } from "../../pages/IsSignedIn.js";
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
 import logo from "../../images/logo.svg";
@@ -77,18 +77,30 @@ export default ({
    * changing the defaultLinks variable below below.
    * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
    */
-  const defaultLinks = [
+
+  const [state, setState] = useState(100);
+
+  useEffect(() => {
+    const runCheck = check();
+    runCheck.then((response) => {
+      // console.log("This is from useEffect ", response.status);
+      return setState(response.status);
+    });
+  }, []);
+
+
+  let defaultLinks = [
     <NavLinks key={1}>
       <NavLink>
         <NavBarLink to="/aboutus">About Us</NavBarLink>{" "}
       </NavLink>
-      <NavLink >
+      <NavLink>
         <NavBarLink to="/pricing">Pricing</NavBarLink>
       </NavLink>
-      <NavLink >
+      <NavLink>
         <NavBarLink to="/courses">Courses</NavBarLink>
       </NavLink>
-      <NavLink >
+      <NavLink>
         <NavBarLink to="/contactus">Contact</NavBarLink>
       </NavLink>
       <NavLink tw="lg:ml-12!">
@@ -101,6 +113,30 @@ export default ({
       </NavBarLink>
     </NavLinks>,
   ];
+
+  if (state === 200) {
+    defaultLinks = [
+      <NavLinks key={1}>
+        <NavLink>
+          <NavBarLink to="/aboutus">About Us</NavBarLink>{" "}
+        </NavLink>
+        <NavLink>
+          <NavBarLink to="/pricing">Pricing</NavBarLink>
+        </NavLink>
+        <NavLink>
+          <NavBarLink to="/courses">Courses</NavBarLink>
+        </NavLink>
+        <NavLink>
+          <NavBarLink to="/contactus">Contact</NavBarLink>
+        </NavLink>
+        <NavBarLink to="/courses">
+          <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}>
+            My Courses
+          </PrimaryLink>
+        </NavBarLink>
+      </NavLinks>,
+    ];
+  }
 
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss =
