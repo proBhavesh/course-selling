@@ -100,7 +100,7 @@ import ContactUsPage from "pages/ContactUs.js";
 // import BlogIndexPage from "pages/BlogIndex.js";
 import CoursesPage from "pages/Courses.js";
 //########################################################################################################
-import IsSignedIn from "pages/IsSignedIn.js";
+import { check } from "pages/IsSignedIn.js";
 
 //###############################################################################################\\\\\\\\\\\\////////////////
 // import TermsOfServicePage from "pages/TermsOfService.js";
@@ -121,22 +121,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 export default function App() {
 	// If you want to disable the animation just use the disabled `prop` like below on your page's component
 	// return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
-
-	useEffect(async () => {
-		const res = await fetch("http://localhost:3000/backend/isSignedIn", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-
-		// if (res.status === 200) {
-		// 	console.log(res);
-		// }
-
-		console.log("this is response", res);
-	}, []);
-
+	const checkRun = check();
+	console.log(checkRun);
 	let allowedRoutes = (
 		<Switch>
 			<Route path="/" exact>
@@ -177,9 +163,6 @@ export default function App() {
 			</Route>
 			<Route path="/c4" exact>
 				<WindowsBasics />
-			</Route>
-			<Route path="/check" exact>
-				<IsSignedIn />
 			</Route>
 			<Route path="*" exact>
 				<Error />

@@ -169,7 +169,7 @@ const isSignedIn = async (req, res) => {
 	try {
 		const token = req.cookies.jwtoken;
 		if (!token) {
-			res.json(false);
+			res.status(300).json({ message: "Token not found", bool:"false" });
 			return console.log("Token not found", token);
 		}
 
@@ -180,7 +180,9 @@ const isSignedIn = async (req, res) => {
 			"tokens.token": token,
 		});
 		if (!rootUser) {
-			return res.json({ message: "User not found", bool: "false" });
+			return res
+				.status(399)
+				.json({ message: "User not found", bool: "false" });
 		}
 
 		if (rootUser) {
