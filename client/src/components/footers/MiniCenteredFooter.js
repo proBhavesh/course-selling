@@ -43,7 +43,7 @@ export default () => {
             <Link ><NavBarLink to="/">Home</NavBarLink></Link>
             <Link ><NavBarLink to="/aboutus">About</NavBarLink></Link>
             <Link ><NavBarLink to="/contactus">Contact Us</NavBarLink> </Link>
-            <Link ><NavBarLink to="/blog">Blog</NavBarLink></Link>
+            <Link ><NavBarLink to="/courses">Courses</NavBarLink></Link>
           </LinksContainer>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">

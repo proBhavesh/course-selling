@@ -129,7 +129,7 @@ export default ({
         <NavLink>
           <NavBarLink to="/contactus">Contact</NavBarLink>
         </NavLink>
-        <NavBarLink to="/courses">
+        <NavBarLink to="/mycourses">
           <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}>
             My Courses
           </PrimaryLink>

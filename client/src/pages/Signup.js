@@ -11,6 +11,7 @@ import googleIconImageSrc from "images/google-icon.png";
 import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/user-plus.svg";
 import Footer from "components/footers/MiniCenteredFooter.js";
+import GetStarted from "components/cta/GetStarted";
 
 const Container = tw(
   ContainerBase
@@ -216,6 +217,7 @@ export default ({
           </IllustrationContainer>
         </Content>
       </Container>
+      <GetStarted/>  
       <Footer />
     </AnimationRevealPage>
   );

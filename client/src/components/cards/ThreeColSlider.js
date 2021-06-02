@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Slider from "react-slick";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -79,6 +80,7 @@ const PrimaryButton = tw(
 //   return setState(response.status);
 // });
 export default () => {
+  const history = useHistory();
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
@@ -108,7 +110,7 @@ export default () => {
         "https://media.gcflearnfree.org/global/topics/en/office-icon.svg",
       title: "Computer Basics",
       description:
-        "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
+        "This tutorial will help you understand how computers work and how to use them.",
       pricingText: "USD 59.99",
       rating: "4.8",
     },
@@ -117,7 +119,7 @@ export default () => {
         "https://media.gcflearnfree.org/global/topics/en/email-icon.svg",
       title: "Basic Computer Skills",
       description:
-        "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
+        "Looking to learn basic computer skills or upgrade the skills you already have? You've come to the right place",
       locationText: "Ibiza, Spain",
       pricingText: "USD 59.99",
       rating: 4.9,
@@ -127,7 +129,7 @@ export default () => {
         "https://media.gcflearnfree.org/global/topics/en/internet-icon.svg",
       title: "Internet Basics",
       description:
-        "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
+        "In this tutorial, learn how to navigate, find and send files, use shortcuts, and do more in Windows",
       locationText: "Palo Alto, CA",
       pricingText: "USD 59.99",
       rating: "5.0",
@@ -137,7 +139,7 @@ export default () => {
         "https://media.gcflearnfree.org/global/topics/en/online-safety-icon.svg",
       title: "Windows Basics",
       description:
-        "Lorem ipsum dolor sit amet, consectur dolori adipiscing elit, sed do eiusmod tempor nova incididunt ut labore et dolore magna aliqua.",
+        "In this tutorial, improve your Internet skills so you can connect, use the cloud, download and upload files, and do more online.",
       locationText: "Arizona, RAK",
       pricingText: "USD 99/Day",
       rating: 4.5,
@@ -154,7 +156,7 @@ export default () => {
     });
   }, []);
 
-  console.log(state);
+  // console.log(state);
 
   const [buyText, setBuyText] = useState("Please login to Buy");
 
@@ -175,12 +177,24 @@ export default () => {
     productBy: "Treact courses",
   });
 
+  const [courseID, setCourseID] = useState("No course ID");
+  console.log(courseID);
+
+  const getCourseID = (e) => {
+    const id = e.target.id;
+    return setCourseID(id);
+  };
+
+  //<----------------------################ payment for C1 ------------------------------------------------->
   const makePayment = (token) => {
     const body = {
       token,
       product,
+      courseID,
     };
 
+    console.log("This is course ID", courseID);
+    console.log("This is token", token);
     const headers = {
       "Content-Type": "application/json",
     };
@@ -196,6 +210,7 @@ export default () => {
         console.log("Status", status);
         if (status === 200) {
           console.log("Payment successful");
+          return history.push("/");
         }
       })
       .catch((err) => {
@@ -287,17 +302,20 @@ export default () => {
                 </IconWithText>
               </SecondaryInfoContainer>
               <Description>
-                Lorem ipsum dolor sit amet, consectur dolori adipiscing elit,
-                sed do eiusmod tempor nova incididunt ut labore et dolore magna
-                aliqua.
+                This tutorial will help you understand how computers work and
+                how to use them.
               </Description>
             </TextInfo>
             <StripeCheckout
+              name="Xplicit courses"
+              description="Get best courses at Great Price"
+              // image="https://www.vidhub.co/assets/logos/vidhub-icon-2e5c629f64ced5598a56387d4e3d0c7c.png"
               stripeKey="pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
               token={makePayment}
-              name="buy computer Basics"
             >
-              <PrimaryButton>{buyText}</PrimaryButton>
+              <PrimaryButton onClick={getCourseID} id="course1ID">
+                {buyText}
+              </PrimaryButton>
             </StripeCheckout>
           </Card>
           <Card>
@@ -325,12 +343,19 @@ export default () => {
                 </IconWithText>
               </SecondaryInfoContainer>
               <Description>
-                Lorem ipsum dolor sit amet, consectur dolori adipiscing elit,
-                sed do eiusmod tempor nova incididunt ut labore et dolore magna
-                aliqua.
+                Looking to learn basic computer skills or upgrade the skills you
+                already have? You've come to the right place
               </Description>
             </TextInfo>
-            <PrimaryButton>{buyText}</PrimaryButton>
+            <StripeCheckout
+              name="Xplicit courses"
+              description="Get best courses at Great Price"
+              // image="https://www.vidhub.co/assets/logos/vidhub-icon-2e5c629f64ced5598a56387d4e3d0c7c.png"
+              stripeKey="pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+              token={makePayment}
+            >
+              <PrimaryButton>{buyText}</PrimaryButton>
+            </StripeCheckout>
           </Card>
           <Card>
             <CardImage imageSrc="https://media.gcflearnfree.org/global/topics/en/internet-icon.svg" />
@@ -357,12 +382,19 @@ export default () => {
                 </IconWithText>
               </SecondaryInfoContainer>
               <Description>
-                Lorem ipsum dolor sit amet, consectur dolori adipiscing elit,
-                sed do eiusmod tempor nova incididunt ut labore et dolore magna
-                aliqua.
+                In this tutorial, learn how to navigate, find and send files,
+                use shortcuts, and do more in Windows
               </Description>
             </TextInfo>
-            <PrimaryButton>{buyText}</PrimaryButton>
+            <StripeCheckout
+              name="Xplicit courses"
+              description="Get best courses at Great Price"
+              // image="https://www.vidhub.co/assets/logos/vidhub-icon-2e5c629f64ced5598a56387d4e3d0c7c.png"
+              stripeKey="pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+              token={makePayment}
+            >
+              <PrimaryButton>{buyText}</PrimaryButton>
+            </StripeCheckout>
           </Card>
           <Card>
             <CardImage imageSrc="https://media.gcflearnfree.org/global/topics/en/online-safety-icon.svg" />
@@ -389,12 +421,20 @@ export default () => {
                 </IconWithText>
               </SecondaryInfoContainer>
               <Description>
-                Lorem ipsum dolor sit amet, consectur dolori adipiscing elit,
-                sed do eiusmod tempor nova incididunt ut labore et dolore magna
-                aliqua.
+                In this tutorial, improve your Internet skills so you can
+                connect, use the cloud, download and upload files, and do more
+                online.
               </Description>
             </TextInfo>
-            <PrimaryButton>{buyText}</PrimaryButton>
+            <StripeCheckout
+              name="Xplicit courses"
+              description="Get best courses at Great Price"
+              // image="https://www.vidhub.co/assets/logos/vidhub-icon-2e5c629f64ced5598a56387d4e3d0c7c.png"
+              stripeKey="pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+              token={makePayment}
+            >
+              <PrimaryButton>{buyText}</PrimaryButton>
+            </StripeCheckout>
           </Card>
         </CardSlider>
       </Content>

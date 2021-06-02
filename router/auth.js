@@ -20,4 +20,6 @@ router.post("/backend/login", handle.loginHandle);
 
 router.post("/backend/isSignedIn", handle.isSignedIn);
 
+router.get("/backend/getCourses", handle.getCourses);
+
 module.exports = router;

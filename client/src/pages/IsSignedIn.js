@@ -9,3 +9,10 @@ export const check = async () => {
 	// console.log("this is response", res.status);
 	return await res;
 };
+
+export const getCourses = async () => {
+	const res = await fetch("/backend/getCourses");
+	const data = await res.json();
+	console.log("This console log is from getCourses function", data);
+	return await data;
+};

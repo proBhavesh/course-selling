@@ -20,7 +20,7 @@ const Heading = tw.h1`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl tex
 const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`;
 
 const Actions = styled.div`
-  ${tw`relative max-w-md text-center mx-auto lg:mx-0`}
+  ${tw`relative mt-1 max-w-md text-center mx-auto lg:mx-0`}
   input {
     ${tw`sm:pr-48 pl-8 py-4 sm:py-5 rounded-full border-2 w-full font-medium focus:outline-none transition duration-300  focus:border-primary-500 hover:border-gray-500`}
   }
@@ -60,10 +60,17 @@ export default ({ roundedHeaderButton }) => {
               Learn and develop the skills needed to advance in work and life.
             </Paragraph>
             <Actions>
-              <input type="text" placeholder="Your E-mail Address" disbled/>
-              <button><NavBarLink to="/signup">Get Started</NavBarLink></button>
+              <input type="text" placeholder="Your E-mail Address" disbled />
+              <button>
+                <NavBarLink to="/signup">Get Started</NavBarLink>
+              </button>
             </Actions>
-           
+            <Actions>
+              <input type="text" placeholder="Your E-mail Address" disbled />
+              <button>
+                <NavBarLink to="/login">Login</NavBarLink>
+              </button>
+            </Actions>
           </LeftColumn>
           <RightColumn>
             <IllustrationContainer>

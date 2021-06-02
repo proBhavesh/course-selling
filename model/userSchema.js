@@ -27,6 +27,22 @@ const userSchema = new mongoose.Schema({
 			},
 		},
 	],
+	course1: {
+		type: Boolean,
+		default: false,
+	},
+	course2: {
+		type: Boolean,
+		default: false,
+	},
+	course3: {
+		type: Boolean,
+		default: false,
+	},
+	course4: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 userSchema.methods.generateAuthToken = async function () {

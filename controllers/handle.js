@@ -19,11 +19,13 @@ const homeHandle = (req, res) => {
 }
 
 const paymentHandle = (req, res) => {
-	const { product, token } = req.body;
+	const { product, token, courseID } = req.body;
 	console.log("Product1", product);
 	console.log("PRICE", product.price);
+	console.log(courseID);
 	const idempontencyKey = uuid();
 
+	console.log(token.email);
 	return stripe.customers
 		.create({
 			email: token.email,
@@ -49,8 +51,24 @@ const paymentHandle = (req, res) => {
 		})
 		.then(async (result) => {
 			res.status(200).json(result);
-			// const userEmail = await User.findOne({ email: email });
-			// console.log(userEmail);
+			const userFound = await User.findOne({ email: token.email });
+			const objectId = userFound._id;
+			// console.log("This is object id ", userFound._id);
+			const userEmail = token.email;
+			const courseNum = 2;
+			const updatedData = await User.findByIdAndUpdate(
+				{ _id: objectId, courseNum },
+				{
+					$set: {
+						[`course${courseNum}`]: true,
+					},
+				},
+				{
+					new: true,
+					useFindAndModify: false,
+				}
+			);
+			console.log(updatedData);
 			// const insertCourse = await userEmail.insert({
 			// 	"course bought": "yes",
 			// });
@@ -196,6 +214,38 @@ const isSignedIn = async (req, res) => {
 	}
 };
 
+//<-------------------------------- Setting buyed courses to database ------------------------->
+
+const getCourses = async (req, res) => {
+	try {
+		const token = req.cookies.jwtoken;
+		if (!token) {
+			res.status(300).json({ message: "Token not found", bool: "false" });
+			return console.log("Token not found", token);
+		}
+
+		const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
+
+		const rootUser = await User.findOne({
+			_id: verifyToken._id,
+			"tokens.token": token,
+		});
+		if (!rootUser) {
+			return res
+				.status(399)
+				.json({ message: "User not found", bool: "false" });
+		}
+
+		if (rootUser) {
+			console.log(rootUser);
+			return res.send(rootUser);
+		}
+		// const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
+	} catch (err) {
+		console.log(err);
+	}
+};
+
 // <-------------------------Module Export ------------------------------------>
 module.exports = {
 	homeHandle,
@@ -203,4 +253,5 @@ module.exports = {
 	signupHandle,
 	loginHandle,
 	isSignedIn,
+	getCourses,
 };

@@ -100,7 +100,7 @@ import ContactUsPage from "pages/ContactUs.js";
 // import BlogIndexPage from "pages/BlogIndex.js";
 import CoursesPage from "pages/Courses.js";
 //########################################################################################################
-import { check } from "pages/IsSignedIn.js";
+import { check, getCourses } from "pages/IsSignedIn.js";
 
 //###############################################################################################\\\\\\\\\\\\////////////////
 // import TermsOfServicePage from "pages/TermsOfService.js";
@@ -109,6 +109,8 @@ import Error from "pages/Error.js";
 import SignupSucess from "pages/SignupSucess.js";
 import LoginSucess from "pages/LoginSucess.js";
 import ComponentRenderer from "ComponentRenderer.js";
+
+import MyCourses from "pages/MyCourses.js";
 // import MainLandingPage from "MainLandingPage.js";
 import ComputerBasicsSy from "./Courses/computerBasics/ComputerBasicsSy.js";
 import ComputerBasics from "./Courses/computerBasics/ComputerBasics.js";
@@ -131,6 +133,8 @@ export default function App() {
 			return setState(response.status);
 		});
 	}, []);
+
+	
 
 	// console.log("This is state itself", state);
 
@@ -222,6 +226,9 @@ export default function App() {
 				</Route>
 				<Route path="/c4" exact>
 					<WindowsBasics />
+				</Route>
+				<Route path="/mycourses" exact>
+					<MyCourses />
 				</Route>
 				<Route path="*" exact>
 					<Error />
