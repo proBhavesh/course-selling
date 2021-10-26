@@ -199,7 +199,7 @@ export default () => {
       "Content-Type": "application/json",
     };
 
-    return fetch("http://localhost:5000/backend/payment", {
+    return fetch("/backend/payment", {
       method: "POST",
       headers,
       body: JSON.stringify(body),
@@ -218,9 +218,9 @@ export default () => {
       });
   };
 
-  // // const stripe = Stripe('pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ');
+  // // const stripe = Stripe('pk_live_51IJ2aGFSQv1Tpw1NSSt22giRsEiLy6dOiUhiqFweMG2UigwWu242apRpUVmaYEaC1hPTqxt3g1DIGGLnLd60hbqr00BjOyFY04');
   // const stripePromise = loadStripe(
-  //   "pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+  //   "pk_live_51IJ2aGFSQv1Tpw1NSSt22giRsEiLy6dOiUhiqFweMG2UigwWu242apRpUVmaYEaC1hPTqxt3g1DIGGLnLd60hbqr00BjOyFY04"
   // );
 
   // // stripe.redirectToCheckout({
@@ -310,7 +310,7 @@ export default () => {
               name="Xplicit courses"
               description="Get best courses at Great Price"
               // image="https://www.vidhub.co/assets/logos/vidhub-icon-2e5c629f64ced5598a56387d4e3d0c7c.png"
-              stripeKey="pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+              stripeKey="pk_live_51IJ2aGFSQv1Tpw1NSSt22giRsEiLy6dOiUhiqFweMG2UigwWu242apRpUVmaYEaC1hPTqxt3g1DIGGLnLd60hbqr00BjOyFY04"
               token={makePayment}
             >
               <PrimaryButton onClick={getCourseID} id="course1ID">
@@ -351,7 +351,7 @@ export default () => {
               name="Xplicit courses"
               description="Get best courses at Great Price"
               // image="https://www.vidhub.co/assets/logos/vidhub-icon-2e5c629f64ced5598a56387d4e3d0c7c.png"
-              stripeKey="pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+              stripeKey="pk_live_51IJ2aGFSQv1Tpw1NSSt22giRsEiLy6dOiUhiqFweMG2UigwWu242apRpUVmaYEaC1hPTqxt3g1DIGGLnLd60hbqr00BjOyFY04"
               token={makePayment}
             >
               <PrimaryButton>{buyText}</PrimaryButton>
@@ -390,7 +390,7 @@ export default () => {
               name="Xplicit courses"
               description="Get best courses at Great Price"
               // image="https://www.vidhub.co/assets/logos/vidhub-icon-2e5c629f64ced5598a56387d4e3d0c7c.png"
-              stripeKey="pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+              stripeKey="pk_live_51IJ2aGFSQv1Tpw1NSSt22giRsEiLy6dOiUhiqFweMG2UigwWu242apRpUVmaYEaC1hPTqxt3g1DIGGLnLd60hbqr00BjOyFY04"
               token={makePayment}
             >
               <PrimaryButton>{buyText}</PrimaryButton>
@@ -430,7 +430,7 @@ export default () => {
               name="Xplicit courses"
               description="Get best courses at Great Price"
               // image="https://www.vidhub.co/assets/logos/vidhub-icon-2e5c629f64ced5598a56387d4e3d0c7c.png"
-              stripeKey="pk_test_51Is8NSSJt0CbONA4mhSeImnG5aPrRXkBSPimKu0HRiGnDRZmvMOQjfpVJNN3doWD1nOOUns6eQ41mzQsNTruIWoh00AM6RCrBZ"
+              stripeKey="pk_live_51IJ2aGFSQv1Tpw1NSSt22giRsEiLy6dOiUhiqFweMG2UigwWu242apRpUVmaYEaC1hPTqxt3g1DIGGLnLd60hbqr00BjOyFY04"
               token={makePayment}
             >
               <PrimaryButton>{buyText}</PrimaryButton>

@@ -147,7 +147,7 @@ export default ({
       {" "}
       <LogoLink>
         <img src={logo} alt="logo" />
-        Xplicit
+        Xplicit Academy
       </LogoLink>
     </NavBarLink>
   );

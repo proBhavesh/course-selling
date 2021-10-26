@@ -1,6 +1,6 @@
 const uuid = require("uuid").v4;
 const stripe = require("stripe")(
-	"sk_test_51Is8NSSJt0CbONA4w38hWPvqJPZOU8FpEpE2Dx3TRojx3ZvemdlsImkN45PvieibKlqmgrd3tbYZIS1Zgs0Tl3A000smrtkchw"
+	"pk_live_51IJ2aGFSQv1Tpw1NSSt22giRsEiLy6dOiUhiqFweMG2UigwWu242apRpUVmaYEaC1hPTqxt3g1DIGGLnLd60hbqr00BjOyFY04"
 );
 const jwt = require("jsonwebtoken");
 const User = require("../model/userSchema");
@@ -192,6 +192,7 @@ const isSignedIn = async (req, res) => {
 		}
 
 		const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
+		console.log(verifyToken);
 
 		const rootUser = await User.findOne({
 			_id: verifyToken._id,

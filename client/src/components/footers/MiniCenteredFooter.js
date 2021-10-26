@@ -37,7 +37,7 @@ export default () => {
         <Row>
           <LogoContainer>
             <LogoImg src={logo} />
-            <LogoText>Treact</LogoText>
+            <LogoText>Xplicit Academy</LogoText>
           </LogoContainer>
           <LinksContainer>
             <Link ><NavBarLink to="/">Home</NavBarLink></Link>

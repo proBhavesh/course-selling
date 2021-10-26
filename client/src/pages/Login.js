@@ -60,7 +60,7 @@ const IllustrationImage = styled.div`
 export default ({
   logoLinkUrl = "#",
   illustrationImageSrc = illustration,
-  headingText = "Sign In To Treact",
+  headingText = "Sign In To Xplicit Academy",
   socialButtons = [
     {
       iconImageSrc: googleIconImageSrc,
@@ -78,7 +78,6 @@ export default ({
   forgotPasswordUrl = "#",
   signupUrl = "#",
 }) => {
-
   //<--------------------------- Login --------------------->
   const history = useHistory();
   const [email, setEmail] = useState("");
@@ -99,6 +98,7 @@ export default ({
     });
 
     const data = await res.json();
+    // console.log(res);
     console.log(`This is Data : ${data}`);
     console.log(`This is res : ${res}`);
     if (res.status === 200) {

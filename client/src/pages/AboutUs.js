@@ -22,7 +22,7 @@ export default () => {
     <AnimationRevealPage disabled>
       <Header />
       <MainFeature1
-        subheading={<Subheading>About Treact</Subheading>}
+        subheading={<Subheading>About Xplicit Academy</Subheading>}
         heading="Xplicit Academy"
         description="Xplicit Academy is a web based learning platform that assists anybody with learnig basic computer skills, internet basics,email and great technology course to accomplish distinctive and knowledgeable goals."
         buttonRounded={false}
